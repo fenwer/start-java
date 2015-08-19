@@ -11,7 +11,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import rest.model.Customer;
-import rest.util.SSLUtil;
+import rest.util.Utils;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -25,8 +25,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        //TODO: disable if no problem with cert
-        SSLUtil.turnOffSslChecking();
+        Utils.importCerts();
 
         final String customersUrl = "https://api.start.payfort.com/customers";
         final String chargesUrl = "https://api.start.payfort.com/charges";
